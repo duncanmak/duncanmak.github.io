@@ -15,12 +15,16 @@
 
     table {
       width: 100%;
-      border-spacing: 4px 10px;
+      border-spacing: 4px 6px;
       border-collapse: separate;
     }
 
+    col:first-child {
+      width: 100px;
+    }
+
     li {
-      margin: 15px 15px;
+      margin: 8px 10px;
       list-style-type: none;
     }
 
@@ -35,6 +39,10 @@
 
     .skills li {
       margin: 4px 15px;
+    }
+
+    .skills-column .skills li {
+      margin-left: 0;
     }
 
     .skills li:first-child {
@@ -80,6 +88,11 @@
       border-left: 1px solid #040;
     }
 
+    .skills-column {
+      padding-left: 10px;
+      border-left: 1px solid #040;
+    }
+
     p {
       margin-top: 5px;
       margin-bottom: 5px;
@@ -98,6 +111,55 @@
       color: black;
       text-decoration: none;
     }
+
+    @page {
+      size: letter;
+      margin: 0.5in;
+    }
+
+    @media print {
+      body {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 9px;
+        line-height: 1.2;
+      }
+
+      .name {
+        font-size: 220%;
+        font-family: "Avenir Next", Arial, sans-serif;
+      }
+
+      .headline {
+        font-size: 110%;
+        font-family: "Avenir Next", Arial, sans-serif;
+      }
+
+      .section {
+        font-size: 110%;
+        font-family: "Avenir Next", Arial, sans-serif;
+      }
+
+      .employer {
+        font-size: 120%;
+      }
+
+      table {
+        table-layout: fixed;
+        border-spacing: 2px 3px;
+      }
+
+      col:first-child,
+      .dates {
+        width: 55px !important;
+      }
+
+      li {
+        margin: 4px 5px;
+      }
+    }
     </style>
   </head>
 
@@ -112,7 +174,7 @@
     </div>
     <table>
       <colgroup>
-        <col style="width: 100px">
+        <col>
         <col>
       </colgroup>
       <tbody>
@@ -146,7 +208,7 @@
             <td class="job">
               <span class="employer">Microsoft (contract)</span>
               <div
-                class="title">Senior Software Engineer · Azure Design Systems</div>
+                class="title">Senior Software Engineer · Azure Studio (Design)</div>
               <ul>
                 <li>
                   <p><b>Product launch recovery:</b>
@@ -157,10 +219,10 @@
                   <p><b>180× faster page loads:</b> Eliminated repeated Figma API requests by introducing SQLite-backed caching for JSON and SVG assets, then applied Brotli compression to reduce page load times from approximately three minutes to under one second.</p>
                 </li>
                 <li>
-                  <p><b>Deployment architecture:</b> Owned Azure deployment architecture for the team's main development effort, developing reusable ARM/Bicep infrastructure definitions and Azure Pipelines workflows to provision independent, database-backed Next.js environments for multiple teams, with isolated resources and separate billing.</p>
+                  <p><b>Deployment architecture:</b> Owned Azure deployment for the team's new development effort. Designed a workflow using reusable ARM/Bicep templates and Azure Pipelines to provision independent, database-backed Next.js applications, enabling multiple customers to run isolated installations with separate infrastructure and billing.</p>
                 </li>
                 <li>
-                  <p><b>Security compliance DRI:</b> Served as the team's security compliance DRI, coordinating with product management and security stakeholders to manage requirements, remediation work, and compliance deadlines.</p>
+                  <p><b>Security compliance:</b> Served as the team's security compliance DRI, coordinating with product management and security stakeholders to manage requirements, remediation work, and compliance deadlines.</p>
                 </li>
                 <li>
                   <p><b>AI-assisted UI generation:</b> Co-developed a Hackweek 2025 prototype using Model Context Protocol (MCP) to expose design-system documentation to LLMs, enabling natural-language generation of JavaScript interfaces built from the team's component library.</p>
@@ -688,7 +750,8 @@
                               </td>
                             </tr>
                             <tr valign="top">
-                              <td colspan="2">
+                              <td></td>
+                              <td class="skills-column">
                                 <ul class="skills">
                                   <li><b>Programming Languages:</b> TypeScript, JavaScript, C#, Scala, F#, Clojure, Scheme, Java, Ruby, Smalltalk</li>
 
